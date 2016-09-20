@@ -1,0 +1,16 @@
+.patchr-btn {
+  background: $green;
+  color: #fff;
+  padding: $padding-base ($padding-base * 2);
+  transition: background 200ms ease-in-out, color 200ms ease-in-out;
+  @include hover-focus-active() {
+    background: $green-dark;
+  }
+
+  &.patchr-btn--secondary {
+    background: $blue;
+    @include hover-focus-active() {
+      background: $blue-light;
+    }
+  }
+}

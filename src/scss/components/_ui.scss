@@ -1,0 +1,38 @@
+.patchr-affixed {
+  z-index: 100;
+}
+
+// Fade.
+.fade {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out;
+  visibility: hidden;
+  &.in {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// Text overflow.
+.patchr-overflow {
+  display: block;
+  padding-right: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Throbber.
+.patchr-throbber {
+  @include throbber(100px);
+  &.sm {
+    height: 50px;
+    margin: 50px auto;
+    width: 50px;
+  }
+  &.xs {
+    height: 15px;
+    margin: 15px auto;
+    width: 15px;
+  }
+}

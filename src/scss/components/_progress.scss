@@ -1,0 +1,50 @@
+// Progress.
+.patchr-progress {
+  background: $gray-light;
+  box-shadow: 0 0 1px rgba(0,0,0,.25) inset;
+  border-radius: 5px;
+  height: 10px;
+  margin: 40px auto;
+  max-width: 800px;
+  position: relative;
+  width: 80%;
+}
+
+// Progress bar.
+.patchr-progress-bar {
+  background: $blue;
+  border-radius: 5px;
+  height: 100%;
+  max-width: 100%;
+  min-width: 10px;
+  width: 1%;
+
+  // Info.
+  &::before {
+    bottom: 100%;
+    color: $gray;
+    content: attr(data-info);
+    left: 30px;
+    line-height: 1;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: absolute;
+    right: 30px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: pre;
+  }
+
+  // Percent.
+  &::after {
+    color: $gray;
+    content: attr(data-percent) '%';
+    left: 0;
+    line-height: 1;
+    margin-top: 10px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    text-align: center;
+  }
+}

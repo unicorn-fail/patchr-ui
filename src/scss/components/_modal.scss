@@ -1,0 +1,220 @@
+// Backdrop for modals.
+.patchr-modal-backdrop {
+  background-color: $modal-backdrop-bg;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $zindex-modal-background;
+  &.fade {
+    opacity: 0;
+  }
+  &.in {
+    opacity: $modal-backdrop-opacity;
+  }
+}
+
+// Kill the scroll on the body
+.patchr-modal-open {
+  overflow: hidden;
+}
+
+// Container for the modal.
+.patchr-modal-wrapper {
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  outline: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity 300ms ease-in-out, top 300ms ease-in-out, visibility 300ms ease-in-out;
+  -webkit-overflow-scrolling: touch;
+  z-index: $zindex-modal;
+  &.fade {
+    .patchr-modal {
+      opacity: 0;
+    }
+  }
+  &.in {
+    .patchr-modal {
+      opacity: 1;
+    }
+  }
+}
+
+// Handle minimized modals.
+.patchr-modal-wrapper.minimized {
+  top: calc(100% - 50px);
+  .patchr-modal {
+    margin: 0 auto;
+    height: 100%;
+    .minimize {
+      display: none;
+    }
+    .maximize {
+      display: inline-flex;
+    }
+  }
+}
+
+// Modal.
+.patchr-modal {
+  background-color: $modal-content-bg;
+  box-shadow: 0 3px 9px rgba(0,0,0,.5);
+  background-clip: padding-box;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  outline: 0;
+  overflow: hidden;
+  position: relative;
+  transition: all 300ms ease-in-out;
+}
+
+// Header.
+.patchr-modal-header {
+  @include clearfix;
+  background: $blue;
+  color: #fff;
+  display: inline-block;
+  height: 50px;
+  overflow: hidden;
+  padding: $modal-title-padding;
+  position: relative;
+  vertical-align: middle;
+  width: 100%;
+  z-index: 1000;
+
+  // Controls
+  .patchr-modal-controls {
+    float: right;
+    margin-right: -15px;
+    margin-top: -15px;
+    .maximize {
+      display: none;
+    }
+    button {
+      align-items: center;
+      background: 0 0;
+      border: 0;
+      border-radius: 0;
+      color: #fff;
+      display: inline-flex;
+      font-size: 18px;
+      font-weight: 900;
+      height: 50px;
+      justify-content: center;
+      line-height: 1;
+      margin: 0;
+      opacity: .5;
+      padding: 0;
+      transition: all 200ms ease-in-out;
+      width: 60px;
+      &:hover {
+        background: $green;
+        border-color: $green;
+        opacity: 1;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+// Title.
+.patchr-modal-title {
+  line-height: 50px;
+  margin: 0;
+  position: relative;
+  top: -15px;
+  vertical-align: middle;
+}
+
+// Content.
+.patchr-modal-content {
+  height: calc(100% - 110px);
+  position: absolute;
+  padding: 0 $modal-inner-padding;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+
+  .patchr-patches {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .patchr-infinity-item {
+    padding: $modal-inner-padding;
+  }
+
+  .patchr-patch-meta {
+    border-radius: 0;
+    display: block;
+    margin: -1px -15px 0;
+    padding: 5px 30px;
+    width: auto;
+  }
+
+}
+
+// Footer.
+.patchr-modal-footer {
+  @include clearfix;
+  background: #f7f7f7;
+  border-top: 1px solid $modal-footer-border-color;
+  bottom: 0;
+  height: 60px;
+  left: 0;
+  padding: $modal-inner-padding;
+  position: absolute;
+  right: 0;
+  text-align: right;
+}
+
+// Media queries.
+@media (min-width: 600px) {
+  .patchr-modal {
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    margin: 20px auto;
+    height: calc(100% - 40px);
+    width: 600px;
+
+    .patchr-modal-content {
+      padding: 0 ($modal-inner-padding * 2);
+      .patchr-infinity-item {
+        padding: ($modal-inner-padding * 2);
+      }
+      .patchr-patch-meta {
+        margin: -1px (-($modal-inner-padding * 2)) 0;
+      }
+      .patchr-file {
+        margin: 0 0 ($modal-inner-padding * 2);
+      }
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .patchr-modal {
+    width: 900px
+  }
+}
+
+@media (min-width: 1200px) {
+  .patchr-modal {
+    margin: 30px auto;
+    height: calc(100% - 60px);
+    width: 1200px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .patchr-modal {
+    width: 1400px;
+  }
+}

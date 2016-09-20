@@ -1,0 +1,65 @@
+// Originally the "sk-cube" spinner from http://tobiasahlin.com/spinkit/.
+//
+// Modified for use with Patchr's "progress" bar.
+@mixin throbber($width: 40px, $height: $width, $color: $blue) {
+  box-sizing: content-box;
+  height: $height;
+  margin: $height auto;
+  position: relative;
+  width: $width;
+
+  &::after {
+    content: attr(data-state);
+    text-align: center;
+    margin: 10px 0;
+    color: $gray;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    white-space: pre;
+  }
+
+  // Non-loading state (X).
+  .c  { background-color: $color; float: left; height: 33%; width: 33%; }
+  .c2, .c4, .c6, .c8 {
+    visibility: hidden;
+  }
+
+  // Loading state (animated).
+  &[data-state=loading] {
+    &::after {
+      content: attr(data-state) '...';
+      text-transform: capitalize;
+    }
+    .c { animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; }
+    .c1 { animation-delay: 0.2s; }
+    .c2 { animation-delay: 0.3s; visibility: visible; }
+    .c3 { animation-delay: 0.4s; }
+    .c4 { animation-delay: 0.1s; visibility: visible; }
+    .c5 { animation-delay: 0.2s; }
+    .c6 { animation-delay: 0.3s; visibility: visible; }
+    .c7 { animation-delay: 0s; }
+    .c8 { animation-delay: 0.1s; visibility: visible; }
+    .c9 { animation-delay: 0.2s; }
+  }
+
+  // Initializing state (animated).
+  &[data-state=initializing] {
+    &::after {
+      content: attr(data-state) '...';
+      text-transform: capitalize;
+    }
+    .c { animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; }
+    .c1 { animation-delay: 0.4s; }
+    .c2 { animation-delay: 0.3s; visibility: visible; }
+    .c3 { animation-delay: 0.2s; }
+    .c4 { animation-delay: 0.3s; visibility: visible; }
+    .c5 { animation-delay: 0.2s; }
+    .c6 { animation-delay: 0.1s; visibility: visible; }
+    .c7 { animation-delay: 0.2s; }
+    .c8 { animation-delay: 0.1s; visibility: visible; }
+    .c9 { animation-delay: 0s; }
+  }
+
+}
